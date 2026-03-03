@@ -1,0 +1,23 @@
+# Node
+node_modules/
+**/node_modules/
+package-lock.json
+**/package-lock.json
+server/node_modules/
+
+# Vite/React build output
+client/dist/
+
+# Env files
+.env
+**/.env
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Editor/OS
+.DS_Store
+Thumbs.db
+.vscode/
