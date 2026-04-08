@@ -149,10 +149,12 @@ cd backend
 npm install
 
 # Configure environment variables
-# Create .env file with:
-PORT=5000
-MONGO_URI=mongodb://localhost:27017/darshanease
-JWT_SECRET=your_super_secret_jwt_key_here
+# Copy the example environment file and update with your values
+cp .env.example .env
+# Edit .env file with your actual values:
+# PORT=5000
+# MONGO_URI=mongodb://localhost:27017/darshanease
+# JWT_SECRET=your_super_secret_jwt_key_here
 
 # Seed initial data (temples, hotels, admin user)
 npm run data:import
