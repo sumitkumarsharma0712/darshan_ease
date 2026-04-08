@@ -1,0 +1,191 @@
+:root {
+  --primary-color: #ff6f00; /* Deep orange */
+  --secondary-color: #ffd54f; /* Amber */
+  --bg-color: #fafafa;
+  --text-primary: #212121;
+  --text-secondary: #757575;
+  --card-bg: #ffffff;
+  --border-color: #e0e0e0;
+  --shadow: rgba(0, 0, 0, 0.1);
+}
+
+[data-theme="dark"] {
+  --primary-color: #ff8a00; /* Lighter orange for dark mode */
+  --secondary-color: #ffeb3b; /* Brighter amber */
+  --bg-color: #121212;
+  --text-primary: #ffffff;
+  --text-secondary: #b0b0b0;
+  --card-bg: #1e1e1e;
+  --border-color: #333333;
+  --shadow: rgba(0, 0, 0, 0.3);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Inter', 'Roboto', sans-serif;
+  background-color: var(--bg-color);
+  color: var(--text-primary);
+  line-height: 1.6;
+  position: relative;
+  overflow-x: hidden;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Enhanced Background Animation with Particles */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background:
+    radial-gradient(circle at 20% 50%, rgba(255, 111, 0, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(255, 213, 79, 0.08) 0%, transparent 50%),
+    radial-gradient(circle at 40% 80%, rgba(255, 111, 0, 0.06) 0%, transparent 50%),
+    linear-gradient(45deg, rgba(255, 111, 0, 0.03), rgba(255, 213, 79, 0.03), rgba(255, 111, 0, 0.03));
+  background-size: 400% 400%, 300% 300%, 500% 500%, 400% 400%;
+  animation: gradientShift 20s ease infinite, particleFloat 25s ease-in-out infinite;
+  z-index: -2;
+}
+
+/* Floating Particles */
+.floating-particles {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image:
+    radial-gradient(circle at 10% 20%, rgba(255, 111, 0, 0.1) 1px, transparent 1px),
+    radial-gradient(circle at 90% 80%, rgba(255, 213, 79, 0.08) 1px, transparent 1px),
+    radial-gradient(circle at 50% 10%, rgba(255, 111, 0, 0.06) 1px, transparent 1px),
+    radial-gradient(circle at 20% 90%, rgba(255, 213, 79, 0.05) 1px, transparent 1px),
+    radial-gradient(circle at 80% 40%, rgba(255, 111, 0, 0.04) 1px, transparent 1px);
+  background-size: 100px 100px, 150px 150px, 200px 200px, 120px 120px, 180px 180px;
+  animation: particleDrift 30s linear infinite;
+  z-index: -1;
+}
+
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 50%, 0% 50%, 0% 50%, 0% 50%;
+  }
+  25% {
+    background-position: 100% 50%, 100% 50%, 100% 50%, 100% 50%;
+  }
+  50% {
+    background-position: 100% 0%, 100% 0%, 100% 0%, 100% 0%;
+  }
+  75% {
+    background-position: 0% 0%, 0% 0%, 0% 0%, 0% 0%;
+  }
+  100% {
+    background-position: 0% 50%, 0% 50%, 0% 50%, 0% 50%;
+  }
+}
+
+@keyframes particleFloat {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  25% {
+    transform: translateY(-10px) rotate(90deg);
+  }
+  50% {
+    transform: translateY(-20px) rotate(180deg);
+  }
+  75% {
+    transform: translateY(-10px) rotate(270deg);
+  }
+}
+
+@keyframes particleDrift {
+  0% {
+    background-position: 0px 0px, 0px 0px, 0px 0px, 0px 0px, 0px 0px;
+  }
+  100% {
+    background-position: 100px 100px, 150px 150px, 200px 200px, 120px 120px, 180px 180px;
+  }
+}
+
+/* Watermark */
+.watermark {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(-45deg);
+  font-size: 72px;
+  font-weight: bold;
+  color: rgba(0, 0, 0, 0.03);
+  z-index: -3;
+  pointer-events: none;
+  user-select: none;
+}
+
+[data-theme="dark"] .watermark {
+  color: rgba(255, 255, 255, 0.02);
+}
+
+/* Material-UI Dark Mode Overrides */
+[data-theme="dark"] .MuiPaper-root {
+  background-color: var(--card-bg) !important;
+  color: var(--text-primary) !important;
+}
+
+[data-theme="dark"] .MuiAppBar-root {
+  background-color: var(--primary-color) !important;
+}
+
+[data-theme="dark"] .MuiButton-root {
+  color: var(--text-primary) !important;
+}
+
+[data-theme="dark"] .MuiTextField-root .MuiOutlinedInput-root {
+  background-color: var(--card-bg) !important;
+  color: var(--text-primary) !important;
+}
+
+[data-theme="dark"] .MuiTextField-root .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline {
+  border-color: var(--border-color) !important;
+}
+
+[data-theme="dark"] .MuiInputLabel-root {
+  color: var(--text-secondary) !important;
+}
+
+[data-theme="dark"] .MuiSelect-root {
+  background-color: var(--card-bg) !important;
+  color: var(--text-primary) !important;
+}
+
+[data-theme="dark"] .MuiMenuItem-root {
+  background-color: var(--card-bg) !important;
+  color: var(--text-primary) !important;
+}
+
+[data-theme="dark"] .MuiModal-root .MuiBackdrop-root {
+  background-color: rgba(0, 0, 0, 0.8) !important;
+}
+
+.app-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Outfit', 'Roboto', sans-serif;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
